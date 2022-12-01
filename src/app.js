@@ -3,13 +3,14 @@ const cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
 require("dotenv").config({ path: "./.env.local" });
-const airbnbRouter = require("./Routes/airbnbRoutes.js");
+const airbnbRouter = require("./Routes/airbnbRoutes.js"); // link routes to handle requests
 
 app.use(express.json());
 app.use(cors());
 app.use(airbnbRouter);
 
 //#####################################
+// conn_str: connection string, also replace cluster1 and sample_airbnb with correct info
 const conn_str = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster1.fsgvdfp.mongodb.net/sample_airbnb?retryWrites=true&w=majority`;
 try {
   // Connect to the MongoDB cluster
